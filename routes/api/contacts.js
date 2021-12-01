@@ -57,7 +57,6 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/:contactId', async (req, res, next) => {
   const delitedContact = await removeContact(req.params.contactId)
-  console.log('~ delitedContact', delitedContact)
 
   delitedContact
     ? res.json({
@@ -75,7 +74,6 @@ router.delete('/:contactId', async (req, res, next) => {
 router.patch('/:contactId', async (req, res, next) => {
   const { params: { contactId }, body } = req
   const updatedContact = await updateContact(contactId, body)
-  console.log('~ updatedContact', updatedContact)
 
   return updatedContact
     ? res.json({
