@@ -3,8 +3,6 @@ const logger = require('morgan')
 const cors = require('cors')
 const app = express()
 
-// ----------------------------------------------------------------
-
 const contactsRouter = require('./routes/api/contacts')
 
 const formatsLogger = app.get('env') === 'development' ? 'dev' : 'short'

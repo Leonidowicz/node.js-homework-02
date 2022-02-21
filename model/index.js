@@ -2,18 +2,14 @@ const fs = require('fs/promises')
 const path = require('path')
 const Joi = require('joi')
 
-// ----------------------------------------------------------------
-
 const contactsPath = path.join(__dirname, 'contacts.json')
 
 async function readContacts() {
   return JSON.parse(await fs.readFile(contactsPath))
 }
 async function writeContacts(contacts) {
-  await fs.writeFile(contactsPath, JSON.stringify(contacts))
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2))
 }
-
-// ---------------------------------------------------
 
 const schemaRequired = Joi.object({
   name: Joi.string()
@@ -31,8 +27,6 @@ const schemaOptional = Joi.object({
   phone: Joi.string()
     .optional(),
 })
-
-// ---------------------------------------------------
 
 const listContacts = async () => {
   try {
